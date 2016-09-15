@@ -58,8 +58,11 @@ class SudokuGame
     board[p] = v
   end
 
-  def commence_proceedings
-    process_parameters until board_process_terminates?
+  def run
+    until board_process_terminates?
+      board.render
+      process_parameters
+    end
     puts "Congratulations, you win!"
   end
 
@@ -84,4 +87,4 @@ end
 
 
 game = SudokuGame.from_file("puzzles/sudoku1.txt")
-game.commence_proceedings
+game.run
